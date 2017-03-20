@@ -39,4 +39,15 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
         ln -sf /persist/WCNSS_qcom_wlan_nv.bin \
                 $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin)
 
+# Create symbolic links for Qualcomm {LR.Team -gesangtome}
+$(shell mkdir -p $(TARGET_OUT)/vendor/lib; \
+#        rm -rf $(TARGET_OUT)/vendor/lib/libEGL_adreno.so; \
+        ln -sf /system/vendor/lib/egl/libEGL_adreno.so; \
+        $(TARGET_OUT)/vendor/lib/libEGL_adreno.so)
+
+$(shell mkdir -p $(TARGET_OUT)/vendor/lib64; \
+#        rm -rf $(TARGET_OUT)/vendor/lib64/libEGL_adreno.so; \
+        ln -sf /system/vendor/lib64/egl/libEGL_adreno.so; \
+        $(TARGET_OUT)/vendor/lib64/libEGL_adreno.so)
+
 include $(all-subdir-makefiles)
