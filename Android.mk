@@ -51,7 +51,7 @@ $(shell mkdir -p $(TARGET_OUT)/vendor/lib64; \
         $(TARGET_OUT)/vendor/lib64/libEGL_adreno.so)
 
 # Repair: No rule to make 'libminui_intermediates/events.o' need target: KERNEL_OBJ/usr, stop...
-$(shell mkdir -p $(TARGET_OUT)/../obj/KERNEL_OBJ/usr;
+$(shell mkdir -p $(TARGET_OUT)/../obj/KERNEL_OBJ/usr;)
 # Add by LR.Team -gesangtome
 
 include $(all-subdir-makefiles)
