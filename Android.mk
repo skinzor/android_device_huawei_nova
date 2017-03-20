@@ -30,28 +30,5 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
-# Create a link for the WCNSS config file {LR.Team -gesangtome}
-$(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
-#	ln -sf /persist/WCNSS_qcom_cfg.ini \
-#		$(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini; \
-        ln -sf /persist/WCNSS_wlan_dictionary.dat \
-                $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat \
-        ln -sf /persist/WCNSS_qcom_wlan_nv.bin \
-                $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin)
-
-# Create symbolic links for Qualcomm {LR.Team -gesangtome}
-$(shell mkdir -p $(TARGET_OUT)/vendor/lib; \
-#        rm -rf $(TARGET_OUT)/vendor/lib/libEGL_adreno.so; \
-        ln -sf /system/vendor/lib/egl/libEGL_adreno.so; \
-        $(TARGET_OUT)/vendor/lib/libEGL_adreno.so)
-
-$(shell mkdir -p $(TARGET_OUT)/vendor/lib64; \
-#        rm -rf $(TARGET_OUT)/vendor/lib64/libEGL_adreno.so; \
-        ln -sf /system/vendor/lib64/egl/libEGL_adreno.so; \
-        $(TARGET_OUT)/vendor/lib64/libEGL_adreno.so)
-
-# Repair: No rule to make 'libminui_intermediates/events.o' need target: KERNEL_OBJ/usr, stop...
-$(shell mkdir -p $(TARGET_OUT)/../obj/KERNEL_OBJ/usr;)
-# Add by LR.Team -gesangtome
 
 include $(all-subdir-makefiles)
