@@ -1,0 +1,424 @@
+#
+# system.prop for nova { LR.Team -gesangtome }
+#
+
+rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+ril.subscription.types=NV,RUIM
+DEVICE_PROVISIONED=1
+#
+# Set network mode to (T/L/G/W/1X/EVDO, T/G/W/L) for 7+5 mode device on DSDS mode
+#
+ro.telephony.default_network=22,20
+
+debug.sf.hw=0
+debug.egl.hw=0
+persist.hwc.mdpcomp.enable=true
+debug.mdpcomp.logs=0
+dalvik.vm.heapsize=36m
+dev.pm.dyn_samplingrate=1
+persist.demo.hdmirotationlock=false
+debug.enable.sglscale=1
+debug.gralloc.enable_fb_ubwc=1
+#ro.hdmi.enable=true
+persist.speaker.prot.enable=false
+qcom.hw.aac.encoder=true
+
+#
+# system props for the cne module
+#
+persist.cne.feature=4
+
+#system props for the MM modules
+media.msm8956hw=0
+mm.enable.smoothstreaming=true
+mmp.enable.3g2=true
+media.aac_51_output_enabled=true
+av.debug.disable.pers.cache=1
+media.hevc.cores=3
+
+#codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MKV MP2PS MP2TS MP3 OGG QCP WAV FLAC AIFF APE
+mm.enable.qcom_parser=1048575
+
+voice.playback.conc.disabled=true
+voice.record.conc.disabled=false
+voice.voip.conc.disabled=true
+voice.conc.fallbackpath=deep-buffer
+audio.parser.ip.buffer.size=262144
+
+#
+# system props for the data modules
+#
+ro.use_data_netmgrd=true
+persist.data.netmgrd.qos.enable=true
+persist.data.mode=concurrent
+
+#system props for time-services
+persist.timed.enable=true
+
+#
+# system prop for opengles version
+#
+# 196608 is decimal for 0x30000 to report major/minor versions as 3/0
+# 196609 is decimal for 0x30001 to report major/minor versions as 3/1
+ro.opengles.version=196609
+
+# System property for cabl
+ro.qualcomm.cabl=2
+config.cabl.xml=1
+config.cabl.path=/system/etc/cablconfig.xml
+
+#
+# System props for telephony
+# System prop to turn on CdmaLTEPhone always
+telephony.lteOnCdmaDevice=1
+
+#
+# System props for bluetooh
+# System prop to turn on hfp client
+bluetooth.hfp.client=1
+ro.bt.bdaddr_path=/data/misc/bluedroid/macbt
+#Simulate sdcard on /data/media
+#
+persist.fuse_sdcard=true
+
+#snapdragon value add features
+ro.qc.sdk.audio.ssr=false
+ro.qc.sdk.audio.fluencetype=none
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
+tunnel.audio.encode = false
+audio.offload.buffer.size.kb=64
+audio.offload.min.duration.secs=30
+audio.offload.video=true
+
+#Enable PCM offload by default
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+
+#Enable audio track offload by default
+audio.offload.track.enable=true
+
+#Enable music through deep buffer
+audio.deep_buffer.media=true
+
+#Default pcm audio sink buffer size in msec. This is used in calculating framecount
+media.stagefright.audio.sink=280
+
+#enable downsampling for multi-channel content > 48Khz
+audio.playback.mch.downsample=true
+
+#enable voice path for PCM VoIP by default
+use.voice.path.for.pcm.voip=true
+
+#enable software decoders for ALAC and APE.
+use.qti.sw.alac.decoder=true
+use.qti.sw.ape.decoder=true
+
+#System property for FM transmitter
+ro.fm.transmitter=false
+#enable dsp gapless mode by default
+audio.offload.gapless.enabled=true
+
+#multi offload
+audio.offload.multiple.enabled=false
+
+#enable pbe effects
+audio.safx.pbe.enabled=true
+#property for AudioSphere Post processing
+audio.pp.asphere.enabled=false
+
+#property to enable user to access Google WFD settings
+persist.debug.wfd.enable=1
+#property to enable VDS WFD solution
+persist.hwc.enable_vds=1
+
+#selects CoreSight configuration to enable
+persist.debug.coresight.config=stm-events
+
+#property for vendor specific library
+ro.vendor.gt_library=libqti-gt.so
+ro.vendor.at_library=libqti-at.so
+
+#property to enable narrow search range for video encoding
+vidc.enc.disable_bframes=1
+vidc.dec.downscalar_width=1920
+vidc.dec.downscalar_height=1088
+
+# Additional buffers shared between Camera and Video
+vidc.enc.dcvs.extra-buff-count=2
+
+# system property to accelerate Progressive Download using STA
+persist.mm.sta.enable=0
+
+#property to enable fingerprint
+persist.qfp=false
+
+#min/max cpu in core control
+ro.core_ctl_min_cpu=2
+ro.core_ctl_max_cpu=4
+
+#property to enable DS2 dap
+audio.dolby.ds2.enabled=true
+
+#HWUI properties
+ro.hwui.texture_cache_size=72
+ro.hwui.layer_cache_size=48
+ro.hwui.r_buffer_cache_size=8
+ro.hwui.path_cache_size=32
+ro.hwui.gradient_cache_size=1
+ro.hwui.drop_shadow_cache_size=6
+ro.hwui.texture_cache_flushrate=0.4
+ro.hwui.text_small_cache_width=1024
+ro.hwui.text_small_cache_height=1024
+ro.hwui.text_large_cache_width=2048
+ro.hwui.text_large_cache_height=1024
+
+#Enable B service adj transition by default
+ro.sys.fw.bservice_enable=true
+ro.sys.fw.bservice_limit=5
+ro.sys.fw.bservice_age=5000
+
+#Memperf properties
+ro.memperf.lib=libmemperf.so
+ro.memperf.enable=false
+
+#Trim properties
+ro.sys.fw.use_trim_settings=true
+ro.sys.fw.empty_app_percent=60
+ro.sys.fw.trim_empty_percent=100
+ro.sys.fw.trim_cache_percent=100
+ro.sys.fw.trim_enable_memory=3221225472
+
+# Enable Delay Service Restart
+ro.am.reschedule_service=true
+
+#Optimal dex2oat threads for faster app installation
+ro.sys.fw.dex2oat_thread_count=4
+
+# Create zram disk
+ro.config.zram=true
+
+# set cutoff voltage to 3400mV
+ro.cutoff_voltage_mv=3400
+
+#set device emmc size
+ro.emmc_size=16GB
+
+#force HAL1 for below packages
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+
+#Enable FR27607-RIL to send ONLINE cmd in bootup
+persist.radio.poweron_opt=1
+
+persist.radio.multisim.config=dsds
+ro.config.dsds_mode=cdma_gsm
+
+#low power mode for camera
+camera.lowpower.record.enable=1
+
+#properties for limiting preview size in camera
+camera.display.umax=1920x1080
+camera.display.lmax=1280x720
+
+#set STATS_DBG_DISABLE_HAF_STATUS
+#do not display focus frame when do HAF
+persist.camera.stats.test=5
+
+ro.sys.fw.bg_apps_limit=30
+
+persist.nfc.smartcard.config=SIM1,SIM2,eSE1
+keyguard.no_require_sim=true
+ro.carrier=unknown
+
+ro.vendor.extension_library=libqti-perfd-client.so
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.sib16_support=1
+persist.radio.custom_ecc=1
+af.fast_track_multiplier=1
+audio_hal.period_size=192
+
+
+persist.radio.adb_log_on=1
+persist.data.tcp_rst_drop=true
+persist.radio.add_power_save=1
+persist.dpm.feature=6
+persist.radio.cable_detect=true
+
+persist.radio.rat_on=combine
+ro.SignalStrength.ValidateInput=true
+persist.radio.sw_mbn_update=1
+ro.config.hw_omacp=1
+ro.config.hwecc_feature=true
+ro.hwpp.call_process_info=true
+ro.hwpp.sms_resend_ind=true
+ro.hwpp.voice_issue_detect=true
+ro.hwpp.disable_callcontrol=true
+ro.config.hw_self_reg_sms=true
+persist.radio.mt_sms_ack=30
+ro.config.hw_stk_selectitem=true
+ro.hwpp.hidestk=true
+ro.hwpp.sms_pp_dl_ack_ach=true
+ro.config.techProNotPowerDown=false
+ro.config.hwft_simrefresh=true
+ro.config.hw_switchdata_4G=true
+ro.config.emailanr_support=true
+persist.radio.no_wait_for_card=1
+ro.config.hw_channel_info=1,0,460,1
+persist.atel.noalpha.usrcnf=false
+ro.ct.custom_operator=46003-460003-45502-455002-46012-460012
+ro.config.hw_hotswap_on=true
+persist.radio.modem.cap=7C442
+ro.telephony.ril_class=HwQualcommRIL
+ro.config.hw_show_4G_Plus_icon=true
+persist.radio.cs_srv_type=true
+
+persist.rt.fingerprint.switch=true
+ro.hw.rt.smartpa.switch=true
+ro.hw.rt.current.switch=true
+ro.hw.rt.workcur.switch=true
+persist.rt.camera.vcm.switch=true
+persist.rt.emmc.monitor.switch=false
+persist.rt.pmic.test.switch=false
+ro.rt.lcd.checksum.switch=false
+persist.sys.dualcards=true
+ro.rt.lcd.light.loop=60
+persist.rt.lcd.flash.number=400
+persist.rt.spk.mic.level=30
+persist.rt.speaker.level=40
+persist.rt.receiver.level=20
+ro.config.app_big_icon_size=180
+ro.config.launcher_matchcard=0
+ro.config.hw_navi_launcher=false
+ro.config.check_wifi_internet=false
+ro.config.colorTemperature_K3=true
+ro.config.emergencycall_show=true
+ro.config.glove_file_path=/sys/touchscreen/glove_func/signal_disparity
+ro.config.disable_add_device=true
+ro.config.hw_glovemode_enabled=1
+ro.config.hw_singlehand=1
+ro.config.hwft_PinPukUnlockscr=true
+ro.config.isNeedApList=true
+ro.config.isSLEntitleSet=true
+ro.config.apn_cancel_nopop=true
+qemu.hw.mainkeys=0
+modify_ram_show=true
+ro.config.show6130=true
+ro.dual.sim.phone=true
+ro.config.hw_gps_power_track=true
+ro.huawei.multiwindow=false
+ro.config.linkplus.liveupdate=true
+ro.config.colorTemperature_3d=true
+ro.config.finger_joint=true
+ro.config.hw_eas_sdformat=true
+
+ro.config.huawei_smallwindow=0,0,1080,1920
+ro.config.small_cover_size=_1080x1920
+ro.config.hw_cover_sbar_padding=0,-21,0,0
+ro.config.conn_diagnose=true
+ro.config.qcom_wapi=true
+ro.config.hw_smart_backlight=0
+ro.product.hardwareversion=HL1MLAM
+ro.config.hw_easywakeup=false
+ro.build.google.port=7276
+ro.config.linkplus.roaming=true
+ro.config.limit_lcd_manual=false
+ro.config.hw_pin_retry_in_resp=true
+ro.build.hw_emui_lite.enable=true
+audio.offload.disable=1
+ro.camera.sound.forced=1
+
+ro.config.camera_target_track=true
+ro.config.hw_auto_scene=true
+ro.config.hw_burst_snapshot=true
+ro.config.hw_camera_bestShot=true
+ro.config.hw_camera_davinci=true
+ro.config.hw_camera_hdr=true
+ro.config.hw_camera_mfd=true
+ro.config.hw_camera_nicefood=true
+ro.config.hw_camera_omron=true
+ro.config.hw_camera_refocus=true
+ro.config.hw_camera_smartae=false
+ro.config.hw_camera_zsl=true
+ro.config.hw_lte_support=true
+ro.config.amrwb_disable=true
+ro.config.hw_dts=false
+ro.config.hw_sws=false
+ro.config.hw_dolby=false
+ro.config.hw_audio_plus=false
+persist.hw_camera.video_sta=false
+ro.config.hwinternet_audio=1
+ro.config.hw_manual_focus=true
+ro.config.hw_photo_beauty=true
+ro.config.hw_video_beauty=true
+ro.config.speed_control_enable=true
+ro.media.NxpSmartPACurve=VNS_QCOM_1225:1,-40:87,-4:93,-2:100,0.0:-15:
+ro.config.hw_camera_docbeauty=true
+
+ro.config.slow_play_enable=true
+ro.hwcamera.previeweffects=true
+audio.musicfx.bassboost.max=500
+audio.musicfx.virtualizer.max=500
+ro.hwcamera.jpeg.quality=95
+ro.connectivity.chiptype=Qualcomm
+ro.config.incall_notify_mms=true
+ro.config.hw_volte_dyn=true
+ro.config.hw_fingeranimation=true
+ro.config.hardware_arithmetic=false
+ro.config.small.previewpos=left
+ro.hwcamera.start_on_boot=true
+ro.hwcamera.disableAFInCapture=true
+ro.hwcamera.auto_capture_once=true
+ro.config.hpx_support=true
+dalvik.vm.heapidealfree=8388608
+dalvik.vm.heaputilization=0.75
+dalvik.vm.jit.codecachesize=1024
+ro.config.hw_navigationbar=true
+ro.sf.lcd_density=480
+ro.config.sunlight_readable=true
+ro.product.fingerprintName=HUAWEI-MILAN
+ro.config.hw_min_brightness=true
+ro.config.need_dark_lux_lower=true
+ro.config.max_other_quality=30
+ro.config.setuiccsub_by_slot=true
+ro.config.hw_eyes_protection=7
+ro.config.navigation_bar_height=44
+ro.build.hw_emui_lite.contacts=true
+ro.config.hw_lite_oom=true
+ro.build.hide.matchers=Honor;msm8952;Adreno(TM)405;Qualcomm;HUAWEI CAN;HUAWEI CAZ;CAN;CAZ;
+ro.build.hide.replacements=Huawei;unknown;unknown;unknown;BEE;BEE;BEE;BEE;
+ro.build.hide.settings=4;1.2 GHz;2.0GB;2.00 GB;8.00 GB;1280 x 720;5;3.0.8;3.1
+ro.build.id.replace=unknown
+ro.config.hw_directly_callfdn=true
+ro.config.hw_support_ipcall=true
+drm.service.enabled=true
+ro.config.hw_fdtimer_screenOn=-1
+ro.config.hw_fdtimer_screenOff=3000
+ro.config.hw_fast_dormancy=true
+ro.config.hw_USB_on_enable_FD=true
+ro.config.earphone_hint=true
+ro.config.hw_multiscreen=true
+ro.config.hw_smartcardservice = true
+ro.config.updatelocation=true
+ro.hwpps.network.type.comma=true
+ro.config.ca_withoutcat=true
+ro.config.support_ca=true
+ro.hwpp_fast_pref_net_reg=true
+ro.config.hw_lte_release=true
+ro.config.hw_vtlte_on=true
+ro.config.hw_volte_on=true
+ro.config.hw_ims_pkg=org.codeaurora.ims
+ro.config.hw_double_barrier=true
+ro.com.google.clientidbase=android-huawei
+ro.config.wps_server=true
+ro.config.hw_wifi_qrcode=false
