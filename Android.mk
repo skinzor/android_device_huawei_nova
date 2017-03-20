@@ -30,5 +30,13 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
+# Create a link for the WCNSS config file {LR.Team -gesangtome}
+$(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
+#	ln -sf /persist/WCNSS_qcom_cfg.ini \
+#		$(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini; \
+        ln -sf /persist/WCNSS_wlan_dictionary.dat \
+                $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat \
+        ln -sf /persist/WCNSS_qcom_wlan_nv.bin \
+                $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin)
 
 include $(all-subdir-makefiles)
