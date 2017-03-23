@@ -19,20 +19,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Download non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/Huawei/nova/nova-vendor.mk)
 
+$(call inherit-product-if-exists, device/Huawei/nova/full_nova.mk)
+
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/Huawei/nova/overlay
 
-ifeq ($(TARGET_PLATFROM_PRODUCT),CAZ_TL10)
 PRODUCT_COPY_FILES += \
-    device/Huawei/nova/Prebuilt/TL10/zImage:kernel
-else
-ifeq ($(TARGET_PLATFROM_PRODUCT),CAZ_AL10)
-PRODUCT_COPY_FILES += \
-    device/Huawei/nova/Prebuilt/AL10/zImage:kernel
-endif
-endif
+    device/Huawei/nova/Prebuilt/zImage:kernel
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -199,29 +194,16 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.qcom.sh \
-    init.qcom.bms.sh \
-    init.mdm.sh \
-    init.nubia.sh \
-    init.qcom.syspart_fixup.sh \
     init.class_main.sh \
+    init.mdm.sh \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
-    init.qcom.usb.sh
-
-PRODUCT_PACKAGES += \
-    init.qcom.rc \
-    init.target.rc \
-    init.qcom.usb.rc \
-    init.nubia.extend.usb.rc \
-    init.nubia.usb.rc \
-    init.project.rc \
+    init.qcom.sensors.sh \
+    init.qcom.sh \
+    init.qcom.ssr.sh \
+    init.qcom.syspart_fixup.sh \
+    init.qcom.usb.sh \
     ueventd.qcom.rc
-
-PRODUCT_PACKAGES += \
-    e2image_blocks \
-    filefrag_blocks \
-    mdtp_fota
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -230,6 +212,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     sensors.msm8953
+
+# libcryptfs
+PRODUCT_PACKAGES += \
+    libcryptfs_hw
 
 # Snapdragon Camera
 PRODUCT_PACKAGES += \
@@ -254,7 +240,6 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     libqsap_sdk \
-#    libQWiFiSoftApCfg \
     libwpa_client
 
 PRODUCT_PACKAGES += \

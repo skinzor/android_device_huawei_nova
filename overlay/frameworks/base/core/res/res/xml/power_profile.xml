@@ -81,7 +81,7 @@
         <value>150</value>
         <value>196</value>
     </array>
-    <item name="battery.capacity">3000</item>
+    <item name="battery.capacity">3020</item>
 
     <array name="wifi.batchedscan"> <!-- mA.  Current figures based on .0801 s/c and 75.48mA while scanning -->
         <value>.0002</value> <!-- 1-8/hr -->

@@ -36,6 +36,8 @@ TARGET_BOARD_PLATFORM := msm8953
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno506
 TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
+
+#Enable CPUSET
 ENABLE_CPUSETS := true
 
 # Bootloader
@@ -43,12 +45,11 @@ TARGET_BOOTLOADER_BOARD_NAME := HUAWEI
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk slub_min_objects=12
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-
-# Product Select
-TARGET_PLATFROM_PRODUCT := CAZ_TL10
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive
+TARGET_PREBUILT_KERNEL := device/Huawei/nova/Prebuilt/zImage
 
 # Audio
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
@@ -84,7 +85,8 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
+BOARD_HARDWARE_CLASS += \
+    hardware/cyanogen/cmhw
 
 # CNE
 BOARD_USES_QCNE := true
@@ -146,8 +148,6 @@ USE_SENSOR_MULTI_HAL := true
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
-TARGET_QC_TIME_SERVICES_FIX_BY_GESANGTOME := NEED
-TARGET_USE_SDCLANG := true
 TARGET_USES_ION := true
 
 # Ril
@@ -190,23 +190,28 @@ WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME     := "wlan"
 
 # TWRP Recovery
-DEVICE_RESOLUTION := 1080x1920
+TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_DEFAULT_LANGUAGE := zh_CN
+DEVICE_RESOLUTION := 1080x1920
 
+TARGET_RECOVERY_FORCE_PIXEL_FORMAT := RGB_565
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone1/temp
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
-TW_MAX_BRIGHTNESS := 220
-
-TW_TARGET_USES_QCOM_BSP := true
+#TW_INCLUDE_CRYPTO := true
+#TW_TARGET_USES_QCOM_BSP := true
 TW_NEW_ION_HEAP :=true
+
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_HAS_NO_REAL_SDCARD := true
 
 TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 
-TARGET_RECOVERY_FSTAB := device/Huawei/nova/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/Huawei/nova/twrp.fstab
 
 # inherit from the proprietary version
 -include vendor/Huawei/nova/BoardConfigVendor.mk

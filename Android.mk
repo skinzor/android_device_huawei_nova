@@ -17,6 +17,7 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
 include $(CLEAR_VARS)
 
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
@@ -52,6 +53,7 @@ $(shell mkdir -p $(TARGET_OUT)/vendor/lib64; \
 
 # Repair: No rule to make 'libminui_intermediates/events.o' need target: KERNEL_OBJ/usr, stopping...
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr;)
-# Add by LR.Team -gesangtome
 
-include $(all-subdir-makefiles)
+PRODUCT_DEFAULT_LANGUAGE := zh
+PRODUCT_DEFAULT_REGION   := CN
+PRODUCT_LOCALES := en_US zh_CN zh_HK
